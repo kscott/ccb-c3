@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @search.id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @search.name %>
+</p>
+
+<p>
+  <b>CCB ID:</b>
+  <%= @search.ccb_id %>
+</p>
+
+
+<%= link_to 'Execute', execute_search_path(@search) %> |
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing search results</h1>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>CCB Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+
+  <% @results.each do |person| %>
+    <tr>
+      <td><%= person.id %></td>
+      <td><%= person.ccb_id %></td>
+      <td><%= person.first_name %></td>
+      <td><%= person.last_name %></td>
+      <td><%= person.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to "Add to local database", add_local_search_path %><br />
+<%= link_to "Return to searches", searches_path %>

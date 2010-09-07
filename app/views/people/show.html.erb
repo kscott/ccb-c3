@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @person.last_name %>
+</p>
+
+<p>
+  <b>Ccb:</b>
+  <%= @person.ccb_id %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @person.email %>
+</p>
+
+<% if (@person.ccb_id.blank?) %>
+	<%= link_to 'Add to CCB', insert_person_path(@person) %> |
+<% else %>
+	<%= link_to 'Sync to CCB', sync_person_path(@person) %> |
+<% end %>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

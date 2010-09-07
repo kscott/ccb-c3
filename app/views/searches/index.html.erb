@@ -1,24 +1,28 @@
-<h1>Listing searches</h1>
+<h1>Saved Search Listing</h1>
 
 <table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>CCB ID</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<% @searches.each do |search| %>
-  <tr>
-    <td><%= search.id %></td>
-    <td><%= search.name %></td>
-    <td><%= search.ccb_id %></td>
-    <td><%= link_to 'Show', search %></td>
-    <td><%= link_to 'Edit', edit_search_path(search) %></td>
-    <td><%= link_to 'Destroy', search, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>CCB ID</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @searches.each do |search| %>
+	<tr>
+		<td><%= search.id %></td>
+		<td><%= search.name %></td>
+		<td><%= search.ccb_id %></td>
+		<td><%= link_to 'Show', search %></td>
+		<td><%= link_to 'Edit', edit_search_path(search) %></td>
+		<td><%= link_to 'Destroy', search, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+</tbody>
 </table>
 
 <br />

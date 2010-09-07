@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>C3</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<meta charset="utf-8"/>
+	<title>CCB C3 Conference Sample App</title>
+	<link rel="icon" href="/images/favicon.png" type="image/png">
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
 </head>
+
 <body>
 
-<%= yield %>
+	<div id="wrap" class="container_12">
+		<div id="main" class="clearfix">
+			<div id="masthead" class="grid_12">
+				<h1>CCB C3 Conference Sample Application</h1>
+				<ul>
+					<li><%= link_to 'Home', root_url %></li>
+				</ul>          
+			</div>
+			<div id="nav" class="grid_12">
+				<ul>
+					<!-- <li><a href="#" id="home" accesskey="h">Home</a></li>
+					<li><a href="#" id="groups" accesskey="1">Groups</a></li>
+					<li><a href="#" id="people" accesskey="2">People</a></li>
+					<li><a href="#" id="reports" accesskey="3">Reports</a></li>
+					<li><a href="#" id="communicate" accesskey="4">Communicate</a></li>
+					<li><a href="#" id="admin" accesskey="5">Admin</a></li> -->
+				</ul>        
+			</div>
+
+			<div id="content" class="grid_9">
+				<%= yield %>
+			</div>
+
+			<div id="sidebar" class="grid_3">
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="footer-container" class="container_12">
+		<div id="footer" class="grid_12">
+			&copy; <%= Time.new.year %> Church Community Builder. All Rights Reserved.
+		</div>
+	</div>
 
 </body>
 </html>

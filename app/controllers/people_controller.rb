@@ -85,13 +85,13 @@ class PeopleController < ApplicationController
     p = Person.find(params[:id])
     p.sync
     flash[:notice] = "#{p.first_name} was updated in CCB"
-    redirect_to person_path(p)
+    redirect_to person_url(p)
   end
   
   def insert
     p = Person.find(params[:id])
     p.insert
     flash[:notice] = "#{p.first_name} was added to CCB"
-    redirect_to person_path(p)
+    redirect_to person_url(p)
   end
 end

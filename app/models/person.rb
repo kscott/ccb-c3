@@ -3,6 +3,17 @@ class Person < ActiveRecord::Base
 
   format :xml
   basic_auth 'kscott', 'kds007'
+  
+  def self.persist(people)
+    count = 0
+    people.each do |p|
+      unless Person.find_by_ccb_id(p.ccb_id)
+        p.save
+        count += 1
+      end
+    end
+    count
+  end
 
   def sync
     Person.default_params :srv => 'update_individual', :individual_id => ccb_id

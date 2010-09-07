@@ -7,10 +7,15 @@ class Search < ActiveRecord::Base
   def self.import_ccb
     default_params :srv => 'search_list'
     response = get 'http://dev/api.php'
+    count = 0
     
     response.parsed_response['ccb_api']['response']['searches']['search'].each do |search|
-      Search.create :ccb_id => search['id'], :name => search['name'] unless Search.find_by_name(search['name'])
+      unless Search.find_by_name(search['name'])
+        Search.create :ccb_id => search['id'], :name => search['name']
+        count += 1
+      end 
     end
+    count
   end
 
   def matches

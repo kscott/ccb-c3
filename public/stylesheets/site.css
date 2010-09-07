@@ -144,3 +144,11 @@ table thead th:nth-child(2) {
 table tbody td {
     font-size: 1.125em;
 }
+
+#notice {
+    font-size: 1.25em;
+    padding: 3px;
+	border: 2px solid #abcfab;
+	color: #060;
+	background-color: #e1f2e2;
+}

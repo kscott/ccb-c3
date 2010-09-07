@@ -1,8 +1,4 @@
 class SearchesController < ApplicationController
-  
-  # require 'nokogiri'
-  #   require 'open-uri'
-  
   # GET /searches
   # GET /searches.xml
   def index
@@ -86,7 +82,8 @@ class SearchesController < ApplicationController
   end
   
   def import
-    Search.import_ccb
+    count = Search.import_ccb
+    flash[:notice] = "#{help.pluralize(count, 'search')} added to the local database"
     redirect_to searches_url
   end
 
@@ -97,10 +94,8 @@ class SearchesController < ApplicationController
   end
   
   def add_local
-    results = Search.find(params[:id]).matches
-    results.each do |person|
-      Person.create person.attributes unless Person.find_by_ccb_id(person.ccb_id)
-    end
+    count = Person.persist Search.find(params[:id]).matches
+    flash[:notice] = "#{help.pluralize(count, 'people')} added to the local database"
     redirect_to people_url
   end
 end

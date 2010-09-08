@@ -83,8 +83,7 @@ class SearchesController < ApplicationController
   
   def import
     count = Search.import_ccb
-    flash[:notice] = "#{help.pluralize(count, 'search')} added to the local database"
-    redirect_to searches_url
+    redirect_to searches_url, :notice => "#{help.pluralize(count, 'search')} added to the local database"
   end
 
   def execute
@@ -95,7 +94,6 @@ class SearchesController < ApplicationController
   
   def add_local
     count = Person.persist Search.find(params[:id]).matches
-    flash[:notice] = "#{help.pluralize(count, 'people')} added to the local database"
-    redirect_to people_url
+    redirect_to people_url, :notice => "#{help.pluralize(count, 'people')} added to the local database"
   end
 end

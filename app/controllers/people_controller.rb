@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to(@person, :notice => 'Person was successfully created.') }
+        format.html { redirect_to(@person, :notice => "#{@person.first_name} was successfully created.") }
         format.xml  { render :xml => @person, :status => :created, :location => @person }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to(@person, :notice => 'Person was successfully updated.') }
+        format.html { redirect_to(@person, :notice => "#{@person.first_name} was successfully updated.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,14 +84,12 @@ class PeopleController < ApplicationController
   def sync
     p = Person.find(params[:id])
     p.sync
-    flash[:notice] = "#{p.first_name} was updated in CCB"
-    redirect_to person_url(p)
+    redirect_to p, :notice => "#{p.first_name} was updated in CCB."
   end
   
   def insert
     p = Person.find(params[:id])
     p.insert
-    flash[:notice] = "#{p.first_name} was added to CCB"
-    redirect_to person_url(p)
+    redirect_to p, :notice => "#{p.first_name} was added to CCB."
   end
 end
